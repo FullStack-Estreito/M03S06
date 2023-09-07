@@ -74,7 +74,7 @@ describe(TestesService.prototype.constructor.name, () => {
     let valor = true;
     let valor2 = false;
 
-    // expect(valor).toBeTrue(); //retorna true
+    expect(valor).toBeTrue(); //retorna true
     // expect(valor).toBeTrue(); //retorna false
     // expect(valor2).toBeFalse(); //retorna true
     // expect(valor2).toBeFalse(); //retorna false
@@ -100,11 +100,24 @@ describe(TestesService.prototype.constructor.name, () => {
   });
 
   it(`${TestesService.prototype.multiplicar.name} 
-      deve lançar uma exeção quando não passado o primeiro parâmetro`, 
-    () => {
-      
-    expect(()=> service.multiplicar(0,12)).toThrow(); //irá validar se a exeção foi lançada
+      deve lançar uma exeção quando não passado o primeiro parâmetro`, () => {
+    expect(() => {
+      service.multiplicar(0, 10);
+    }).toThrow(); //irá validar se a exeção foi lançada
     // expect(()=> service.multiplicar(10,12)).toThrow(); //retornar false pois não foi lançada a exeção
   });
 
+  it(`${TestesService.prototype.dividir.name} 
+      deve lançar uma exeção detalhada quando passar certos valores`, () => {
+    // expect(() => {service.dividir(10, 0)}).toThrowError("Não é possível dividir por zero");
+    expect(() => {
+      service.dividir(10, 0);
+    }).toThrowError(TypeError);
+  });
+
+  //Exemplo de uso do xit para ignorar um teste
+  xit(`${TestesService.prototype.somar.name} deve somar dois números quando executado`, () => {
+    let soma = service.somar(30, 30);
+    expect(soma).toEqual(40);
+  });
 });

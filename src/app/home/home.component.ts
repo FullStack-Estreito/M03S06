@@ -17,7 +17,7 @@ export class HomeComponent {
       email: ['', [Validators.required, Validators.email]],
       dtNascimento: ['', Validators.required],
       feedback: ['', Validators.required],
-      nota: ['', [Validators.required, Validators.min(0), Validators.max(10)]]
+      nota: ['', [Validators.required, Validators.min(0), Validators.max(10)]],
     });
   }
 
