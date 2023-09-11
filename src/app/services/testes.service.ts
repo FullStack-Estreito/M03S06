@@ -29,4 +29,16 @@ export class TestesService {
 
     return valor1 / valor2;
   }
+
+  criarUsuario(nome: string, data:string){
+    let user = {
+      nome: nome,
+      dataNasc: this.formatarData(data)
+    }
+    return user;
+  }
+
+  formatarData(data: string){
+    return new Date(data);
+  }
 }

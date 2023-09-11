@@ -120,4 +120,32 @@ describe(TestesService.prototype.constructor.name, () => {
     let soma = service.somar(30, 30);
     expect(soma).toEqual(40);
   });
+
+  it('Deve criar um novo usuário quando o campo nome e idade estão preenchido', () => {
+    spyOn(service, 'formatarData');
+
+    service.criarUsuario('Aluno 1', '2000-12-12');
+    expect(service.formatarData).toHaveBeenCalled();
+  });
+
+  it('Deve criar um novo usuário quando o campo nome e idade estão preenchido', () => {
+    spyOn(service, 'formatarData');
+
+    service.criarUsuario('Aluno 1', '2000-12-12');
+    service.criarUsuario('Aluno 1', '2000-12-12');
+    service.criarUsuario('Aluno 1', '2000-12-12');
+    expect(service.formatarData).toHaveBeenCalledTimes(3);
+  });
+
+  it('Deve criar um novo usuário quando o campo nome e idade estão preenchido', () => {
+    spyOn(service, 'formatarData');
+
+    service.criarUsuario('Aluno 1', '2000-12-12');
+    service.criarUsuario('Aluno 1', '2000-11-19');
+    service.criarUsuario('Aluno 1', '2000-06-14');
+
+    expect(service.formatarData).toHaveBeenCalledWith('2000-06-14');
+    expect(service.formatarData).toHaveBeenCalledWith('2000-12-12');
+    expect(service.formatarData).toHaveBeenCalledWith('2000-11-19');
+  });
 });
